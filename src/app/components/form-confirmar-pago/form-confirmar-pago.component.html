@@ -1,0 +1,126 @@
+<div class="componente-container">
+
+    <div class="imagen-pago">
+        <img src="../../../assets/tarjeta.png" alt="Imagen pago">
+    </div>
+
+    <form [formGroup]="formularioConfirmarPago" class="formulario-container" (ngSubmit)="confirmarPago()">
+
+        <div class="titulo">
+            <h3>CONFIRMAR PAGO</h3>
+        </div>
+
+        <div class="campos-container">
+
+            <div class="elemento-container">
+                <input type="text" id="inputNombre" formControlName="nombre" ngClass="estiloInput"
+                    [style.borderColor]="this.formularioConfirmarPago.controls['nombre'].valid?'green':'red'">
+                <div [ngStyle]="{'margin':'10px 0'}">
+                    <label for="inputNombre" ngClass="estiloLabel">Nombre</label>
+                </div>
+
+                <div [ngClass]="'error'"
+                    *ngIf="this.formularioConfirmarPago.controls['nombre'].dirty && this.formularioConfirmarPago.controls['nombre'].errors?.['required']">
+                    * El campo es obligatorio *
+                </div>
+
+                <div [ngClass]="'error'"
+                    *ngIf="this.formularioConfirmarPago.controls['nombre'].dirty && this.formularioConfirmarPago.controls['nombre'].errors?.['pattern']">
+                    * Solo se admiten letras *
+                </div>
+            </div>
+
+            <div class="elemento-container">
+                <input type="text" id="inputApellido" formControlName="apellido" ngClass="estiloInput"
+                    [style.borderColor]="this.formularioConfirmarPago.controls['apellido'].valid?'green':'red'">
+
+                <div [ngStyle]="{'margin':'10px 0'}">
+                    <label for="inputApellido" ngClass="estiloLabel">Apellido</label>
+                </div>
+
+                <div [ngClass]="'error'"
+                    *ngIf="this.formularioConfirmarPago.controls['apellido'].dirty && this.formularioConfirmarPago.controls['apellido'].errors?.['required']">
+                    * El campo es obligatorio *
+                </div>
+
+                <div [ngClass]="'error'"
+                    *ngIf="this.formularioConfirmarPago.controls['apellido'].dirty && this.formularioConfirmarPago.controls['apellido'].errors?.['pattern']">
+                    * Solo se admiten letras *
+                </div>
+
+            </div>
+
+            <div class="elemento-container">
+                <input type="text" id="inputTarjeta" formControlName="nroTarjeta" ngClass="estiloInput"
+                    [style.borderColor]="this.formularioConfirmarPago.controls['nroTarjeta'].valid?'green':'red'">
+                <div [ngStyle]="{'margin':'10px 0'}">
+                    <label for="inputTarjeta" ngClass="estiloLabel">Número de
+                        tarjeta</label>
+
+                    <div [ngClass]="'error'"
+                        *ngIf="this.formularioConfirmarPago.controls['nroTarjeta'].dirty && this.formularioConfirmarPago.controls['nroTarjeta'].errors?.['required']">
+                        * El campo es obligatorio *
+                    </div>
+
+                    <div [ngClass]="'error'"
+                        *ngIf="this.formularioConfirmarPago.controls['nroTarjeta'].dirty && this.formularioConfirmarPago.controls['nroTarjeta'].errors?.['pattern']">
+                        * Solo se admiten números *
+                    </div>
+
+                    <div [ngClass]="'error'"
+                        *ngIf="this.formularioConfirmarPago.controls['nroTarjeta'].dirty && this.formularioConfirmarPago.controls['nroTarjeta'].errors?.['maxlength']">
+                        * Longitud máxima permitida: 16 dígitos *
+                    </div>
+                </div>
+            </div>
+
+            <div class="elemento-container">
+                <input type="text" id="inputVencimiento" formControlName="vencimiento" ngClass="estiloInput"
+                    [style.borderColor]="this.formularioConfirmarPago.controls['vencimiento'].valid?'green':'red'">
+
+                <div [ngStyle]="{'margin':'10px 0'}">
+                    <label for="inputVencimiento" ngClass="estiloLabel">Fecha de
+                        vencimiento</label>
+
+                    <div [ngClass]="'error'"
+                        *ngIf="this.formularioConfirmarPago.controls['vencimiento'].dirty && this.formularioConfirmarPago.controls['vencimiento'].errors?.['required']">
+                        * El campo es obligatorio *
+                    </div>
+
+                    <div [ngClass]="'error'"
+                        *ngIf="this.formularioConfirmarPago.controls['vencimiento'].dirty && this.formularioConfirmarPago.controls['vencimiento'].errors?.['pattern']">
+                        * Formato inválido MM/AA *
+                    </div>
+                </div>
+            </div>
+
+            <div class="elemento-container">
+                <input type="text" id="inputCodSeguridad" formControlName="codigoSeguridad" ngClass="estiloInput"
+                    [style.borderColor]="this.formularioConfirmarPago.controls['codigoSeguridad'].valid?'green':'red'">
+
+                <div [ngStyle]="{'margin':'10px 0'}">
+                    <label for="inputCodSeguridad" ngClass="estiloLabel">Código de
+                        Seguridad</label>
+                </div>
+
+                <div [ngClass]="'error'"
+                    *ngIf="this.formularioConfirmarPago.controls['codigoSeguridad'].dirty && this.formularioConfirmarPago.controls['codigoSeguridad'].errors?.['required']">
+                    * El campo es obligatorio *
+                </div>
+
+                <div [ngClass]="'error'"
+                    *ngIf="this.formularioConfirmarPago.controls['codigoSeguridad'].dirty && this.formularioConfirmarPago.controls['codigoSeguridad'].errors?.['pattern']">
+                    * Solo se permiten 3 números *
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="botones-container">
+            <button type="submit" class="boton">CONFIRMAR</button>
+            <button type="reset" class="boton">LIMPIAR DATOS</button>
+        </div>
+
+    </form>
+</div>

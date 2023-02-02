@@ -1,0 +1,59 @@
+<div class="componente-container">
+
+    <div class="imagen-login">
+        <img src="../../../assets/clave.png" alt="Imagen login">
+    </div>
+
+    <form [formGroup]="formularioLogin" class="formulario-container" (ngSubmit)="login()">
+
+        <div class="titulo">
+            <h3>INGRESAR</h3>
+        </div>
+
+        <div class="elemento-container">
+            <label for="inputCorreo" ngClass="estiloLabel">EMAIL</label>
+        </div>
+
+        <div class="elemento-container">
+            <input type="text" id="inputCorreo" formControlName="email" ngClass="estiloInput">
+        </div>
+
+        <div class="elemento-container" *ngIf="this.formularioLogin.controls['email'].valid" [ngClass]="'valido'">
+            Campo Correcto
+        </div>
+
+        <div class=" elemento-container" [ngClass]="'error'"
+            *ngIf="this.formularioLogin.controls['email'].dirty && this.formularioLogin.controls['email'].errors?.['required']">
+            * El campo Email es obligatorio *
+        </div>
+
+        <div class=" elemento-container" [ngClass]="'error'"
+            *ngIf="this.formularioLogin.controls['email'].dirty && this.formularioLogin.controls['email'].errors?.['pattern']">
+            * El formato del email debe ser mail@prueba.com *
+        </div>
+
+        <div class="elemento-container">
+            <label for="inputContrasena" ngClass="estiloLabel">CONTRASEÑA</label>
+        </div>
+
+        <div class="elemento-container">
+            <input type="password" id="inputContrasena" formControlName="contrasena" ngClass="estiloInput">
+        </div>
+
+        <div class=" elemento-container" [ngClass]="'error'"
+            *ngIf="this.formularioLogin.controls['contrasena'].dirty && this.formularioLogin.controls['contrasena'].errors?.['required']">
+            * El campo Contraseña es obligatorio *
+        </div>
+
+        <div class=" elemento-container" [ngClass]="'error'"
+            *ngIf="this.formularioLogin.controls['contrasena'].errors?.['minlength']">
+            * La cantidad mínima de caracteres es 5 *
+        </div>
+
+        <div class="botones-container">
+            <button type="submit" class="boton">ENTRAR</button>
+            <button type="reset" class="boton">LIMPIAR DATOS</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<div class="main-container">
+
+  <app-menu-botones (eventoSalidaFormulario)="actualizarFormulario($event)"></app-menu-botones>
+
+  <div [ngSwitch]="this.formActivo">
+
+    <div *ngSwitchCase="1">
+      <app-form-registro></app-form-registro>
+    </div>
+
+    <div *ngSwitchCase="2">
+      <app-form-login> </app-form-login>
+    </div>
+
+    <div *ngSwitchCase="3">
+      <app-form-confirmar-pago> </app-form-confirmar-pago>
+    </div>
+
+    <div *ngSwitchDefault>
+      <app-form-registro></app-form-registro>
+    </div>
+
+  </div>
+
+</div>
